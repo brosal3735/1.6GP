@@ -2,13 +2,13 @@
 <html>
 <head>
   <!--
-    CIS213 Unit 1, Guided Practice 3
-    Author: <Your Name Here>
-    Date: <Date Here>
+    Unit 1, Graded Exercise 2
+    Author: <Broc SalvTi>
+    Date: <09/-7/2025>
   -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 1 Guided Practice 3</title>
+  <title>W1 Graded Exercise 2</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="modernizr.custom.05819.js"></script>
 </head>
@@ -16,7 +16,7 @@
 <body>
   <header>
     <h1>
-      Your Name, Guided Practice 3
+      Your Name, Graded Exercise 2
     </h1>
   </header>
 
@@ -43,8 +43,7 @@
   </article>
 
   <script>
-    // function to calculate the total, including sales tax
-    // or alert the user to make at least one selection
+    // calculate order total and apply gratuity rule
     function calcTotal() {
       var itemTotal = 0;
       var item1 = document.getElementById("item1");
@@ -53,18 +52,25 @@
       var item4 = document.getElementById("item4");
       var item5 = document.getElementById("item5");
 
-      (item1.checked) ? (itemTotal += 8) : (itemTotal += 0);
-      (item2.checked) ? (itemTotal += 9) : (itemTotal += 0);
-      (item3.checked) ? (itemTotal += 8) : (itemTotal += 0);
+      (item1.checked) ? (itemTotal += 8)  : (itemTotal += 0);
+      (item2.checked) ? (itemTotal += 9)  : (itemTotal += 0);
+      (item3.checked) ? (itemTotal += 8)  : (itemTotal += 0);
       (item4.checked) ? (itemTotal += 13) : (itemTotal += 0);
-      (item5.checked) ? (itemTotal += 6) : (itemTotal += 0);
+      (item5.checked) ? (itemTotal += 6)  : (itemTotal += 0);
 
-      var salesTaxRate = 0.07;
-      var orderTotal = itemTotal + (itemTotal * salesTaxRate);
-
-      orderTotal > 0 ?
-        alert("Your order total is $" + orderTotal.toFixed(2)) :
+      if (itemTotal === 0) {
         alert("Please select at least one item.");
+        return;
+      }
+
+      if (itemTotal <= 20) {
+        alert("Your order total is $" + itemTotal);
+      } else {
+        var totalWithGratuity = itemTotal * 1.20; // add 20% gratuity
+        alert("Your order total before gratuity is $" + itemTotal +
+              ". A 20% Gratuity has been added to your final bill, bringing the total to $" +
+              totalWithGratuity + ".");
+      }
     }
 
     // add an event listener for the Submit button
